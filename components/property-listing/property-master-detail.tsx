@@ -32,45 +32,53 @@ export default function PropertyMasterDetail({
   dictionary,
 }: PropertyMasterDetailProps) {
   const [properties, setProperties] = useState<PropertyType[]>([]);
+  const [filteredProperties, setFilteredProperties] = useState<PropertyType[]>(
+    []
+  );
   const [selectedProperty, setSelectedProperty] = useState<PropertyType | null>(
     null
   );
   const [activeIndex, setActiveIndex] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
   const listRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const dir = getDirection(isRtl ? "ar" : "en");
 
-  // Load properties
   useEffect(() => {
-    const loadedProperties = getSaudiProperties();
-    setProperties(loadedProperties);
-    if (loadedProperties.length > 0) {
-      setSelectedProperty(loadedProperties[0]);
-    }
+    const loaded = getSaudiProperties();
+    setProperties(loaded);
+    setFilteredProperties(loaded);
+    if (loaded.length > 0) setSelectedProperty(loaded[0]);
   }, []);
 
-  // Handle property selection
+  useEffect(() => {
+    const result = properties.filter((p) =>
+      [p.address, p.city, p.region]
+        .join(" ")
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
+    );
+    setFilteredProperties(result);
+    if (result.length > 0) {
+      setSelectedProperty(result[0]);
+      setActiveIndex(properties.indexOf(result[0]));
+    }
+  }, [searchQuery, properties]);
+
   const handleSelectProperty = (property: PropertyType, index: number) => {
     setSelectedProperty(property);
     setActiveIndex(index);
   };
 
-  // Auto-scroll the selected property into view in the list
   useEffect(() => {
     if (listRef.current && !isMobile) {
       const selectedElement = listRef.current.querySelector(
         `[data-index="${activeIndex}"]`
       );
-      if (selectedElement) {
-        selectedElement.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-        });
-      }
+      selectedElement?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   }, [activeIndex, isMobile]);
 
-  // Translations (fallback if dictionary not provided)
   const t = {
     overview: dictionary?.propertyDetail?.overview || "Overview",
     features: dictionary?.propertyDetail?.features || "Features",
@@ -94,7 +102,6 @@ export default function PropertyMasterDetail({
       dictionary?.propertyList?.title || "Featured Properties",
   };
 
-  // Features for the selected property (example)
   const propertyFeatures = [
     "Swimming Pool",
     "Garden",
@@ -116,10 +123,17 @@ export default function PropertyMasterDetail({
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-8" dir={dir}>
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <h2 className="text-2xl font-bold md:text-3xl gold-text">
+      <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <h2 className="text-2xl font-bold md:text-3xl text-teal-300">
           {isRtl ? "العقارات المميزة" : t.featuredProperties}
         </h2>
+        <input
+          type="text"
+          placeholder={isRtl ? "ابحث عن عقار..." : "Search for a property..."}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full max-w-sm rounded-md border px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
+        />
         <div className="flex gap-2">
           <Button variant="outline" size="sm">
             {t.sortBy}
@@ -130,7 +144,7 @@ export default function PropertyMasterDetail({
           <Button size="sm">
             {t.viewAllProperties}
             {isRtl ? (
-              <ArrowLeft className="mr-2 h-4 w-4 arrow-icon-rtl" />
+              <ArrowLeft className="mr-2 h-4 w-4" />
             ) : (
               <ArrowRight className="ml-2 h-4 w-4" />
             )}
@@ -138,8 +152,11 @@ export default function PropertyMasterDetail({
         </div>
       </div>
 
-      {/* Mobile View - Tabs */}
-      {isMobile && (
+      {filteredProperties.length === 0 ? (
+        <p className="text-center text-muted-foreground py-8">
+          {isRtl ? "لا توجد نتائج" : "No matching properties found"}
+        </p>
+      ) : isMobile ? (
         <Tabs defaultValue="list" className="w-full md:hidden">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="list">{isRtl ? "القائمة" : "List"}</TabsTrigger>
@@ -149,12 +166,14 @@ export default function PropertyMasterDetail({
           </TabsList>
           <TabsContent value="list">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {properties.map((property, index) => (
+              {filteredProperties.map((property, index) => (
                 <PropertyCard
                   key={property.id}
                   property={property}
                   isActive={activeIndex === index}
-                  onClick={() => handleSelectProperty(property, index)}
+                  onClick={() =>
+                    handleSelectProperty(property, properties.indexOf(property))
+                  }
                   index={index}
                   isRtl={isRtl}
                 />
@@ -172,56 +191,56 @@ export default function PropertyMasterDetail({
             )}
           </TabsContent>
         </Tabs>
-      )}
-
-      {/* Desktop View - Master-Detail */}
-      <div className="hidden md:grid md:grid-cols-12 md:gap-6">
-        {/* Property List (Left Column) */}
-        <div
-          ref={listRef}
-          className={`md:col-span-5 lg:col-span-4 md:max-h-[800px] md:overflow-y-auto ${
-            isRtl ? "md:pl-4" : "md:pr-4"
-          } md:scrollbar-thin md:scrollbar-thumb-gray-300 md:scrollbar-track-gray-100`}
-        >
-          <div className="grid grid-cols-1 gap-4">
-            {properties.map((property, index) => (
-              <PropertyCard
-                key={property.id}
-                property={property}
-                isActive={activeIndex === index}
-                onClick={() => handleSelectProperty(property, index)}
-                index={index}
-                isRtl={isRtl}
-              />
-            ))}
+      ) : (
+        <div className="hidden md:grid md:grid-cols-12 md:gap-6">
+          <div
+            ref={listRef}
+            className={`md:col-span-5 lg:col-span-4 md:max-h-[800px] md:overflow-y-auto ${
+              isRtl ? "md:pl-4" : "md:pr-4"
+            } md:scrollbar-thin md:scrollbar-thumb-gray-300 md:scrollbar-track-gray-100`}
+          >
+            <div className="grid grid-cols-1 gap-4">
+              {filteredProperties.map((property, index) => (
+                <PropertyCard
+                  key={property.id}
+                  property={property}
+                  isActive={activeIndex === index}
+                  onClick={() =>
+                    handleSelectProperty(property, properties.indexOf(property))
+                  }
+                  index={index}
+                  isRtl={isRtl}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="md:col-span-7 lg:col-span-8">
+            <AnimatePresence mode="wait">
+              {selectedProperty && (
+                <motion.div
+                  key={selectedProperty.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <PropertyDetail
+                    property={selectedProperty}
+                    isRtl={isRtl}
+                    t={t}
+                    features={propertyFeatures}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
-
-        {/* Property Detail (Right Column) */}
-        <div className="md:col-span-7 lg:col-span-8">
-          <AnimatePresence mode="wait">
-            {selectedProperty && (
-              <motion.div
-                key={selectedProperty.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <PropertyDetail
-                  property={selectedProperty}
-                  isRtl={isRtl}
-                  t={t}
-                  features={propertyFeatures}
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
+
+// Reuse your existing PropertyCard and PropertyDetail components here
 
 // Property Card Component
 function PropertyCard({
