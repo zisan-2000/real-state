@@ -67,13 +67,13 @@ export default function HeroSection({ dictionary, isRtl }: HeroSectionProps) {
     >
       {/* Background with parallax effect using framer-motion */}
       <motion.div className="absolute inset-0 z-0" style={{ y, opacity }}>
-        <Image
+        {/* <Image
           src="/placeholder.svg?height=1080&width=1920"
           alt="Saudi Real Estate"
           fill
           priority
           className="object-cover"
-        />
+        /> */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-teal-900/50" />
       </motion.div>
 

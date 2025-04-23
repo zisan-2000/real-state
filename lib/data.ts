@@ -1,4 +1,4 @@
-import type { PropertyType } from "./types"
+import type { PropertyType } from "./types";
 
 export function getSaudiProperties(): PropertyType[] {
   return [
@@ -12,12 +12,14 @@ export function getSaudiProperties(): PropertyType[] {
       bathrooms: 3,
       sqft: 2500,
       type: "Villa",
-      imageUrl: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FMSTK7fAWD1Y5t4JypF9mnWthfxfTH.png",
+      imageUrl:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FMSTK7fAWD1Y5t4JypF9mnWthfxfTH.png",
       lat: 24.7136,
       lng: 46.6753,
       isFeatured: true,
       isCertified: true,
-      description: "Luxurious villa with modern amenities, private pool, and garden in an exclusive neighborhood.",
+      description:
+        "Luxurious villa with modern amenities, private pool, and garden in an exclusive neighborhood.",
     },
     {
       id: "prop2",
@@ -29,7 +31,7 @@ export function getSaudiProperties(): PropertyType[] {
       bathrooms: 2,
       sqft: 1800,
       type: "Apartment",
-      imageUrl: "/placeholder.svg?height=600&width=800&text=Modern+Apartment",
+      imageUrl: "/sa1.jpg",
       lat: 21.5433,
       lng: 39.1728,
       isCertified: true,
@@ -44,7 +46,7 @@ export function getSaudiProperties(): PropertyType[] {
       bathrooms: 4,
       sqft: 3200,
       type: "Villa",
-      imageUrl: "/placeholder.svg?height=600&width=800&text=Waterfront+Villa",
+      imageUrl: "/sa2.jpg",
       lat: 26.4207,
       lng: 50.0888,
       isFeatured: true,
@@ -59,7 +61,7 @@ export function getSaudiProperties(): PropertyType[] {
       bathrooms: 2,
       sqft: 1600,
       type: "Apartment",
-      imageUrl: "/placeholder.svg?height=300&width=400&text=Urban+Apartment",
+      imageUrl: "/sa4.jpeg",
       lat: 24.7741,
       lng: 46.7388,
     },
@@ -73,7 +75,7 @@ export function getSaudiProperties(): PropertyType[] {
       bathrooms: 3,
       sqft: 2800,
       type: "Penthouse",
-      imageUrl: "/placeholder.svg?height=300&width=400&text=Luxury+Penthouse",
+      imageUrl: "/sa5.jpg",
       lat: 26.2794,
       lng: 50.2083,
       isFeatured: true,
@@ -124,5 +126,5 @@ export function getSaudiProperties(): PropertyType[] {
       lng: 39.1243,
       isCertified: true,
     },
-  ]
+  ];
 }
