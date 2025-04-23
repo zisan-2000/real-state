@@ -57,7 +57,7 @@ export default function ProjectsCarousel({ dictionary, isRtl }: ProjectsCarousel
                 <CardContent className="grid grid-cols-1 gap-6 p-0 md:grid-cols-2">
                   <div className="relative h-64 overflow-hidden rounded-lg md:h-80">
                     <Image
-                      src={`/placeholder.svg?height=600&width=800&text=${projects[currentIndex].title}`}
+                      src={`/sa1.jpg`}
                       alt={projects[currentIndex].title}
                       fill
                       className="object-cover"
