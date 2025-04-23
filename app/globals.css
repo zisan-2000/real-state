@@ -1,0 +1,378 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 13%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 160 84% 39%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 45 93% 47%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image: radial-gradient(circle at center, hsl(222, 47%, 13%) 0%, hsl(222, 47%, 11%) 100%);
+  }
+
+  /* Arabic font settings */
+  [dir="rtl"] {
+    font-family: var(--font-arabic), sans-serif;
+  }
+
+  /* English font settings */
+  [dir="ltr"] {
+    font-family: var(--font-sans), sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--secondary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.7);
+}
+
+/* Luxury card styles */
+.luxury-card {
+  @apply bg-card rounded-lg border border-border/30 shadow-lg;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.luxury-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.2), transparent);
+}
+
+.gold-text {
+  @apply text-accent;
+  text-shadow: 0 0 10px hsl(var(--accent) / 0.3);
+}
+
+.premium-badge {
+  @apply bg-accent/90 text-accent-foreground text-xs font-medium px-2 py-0.5 rounded;
+  box-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+}
+
+.glass-effect {
+  @apply bg-card/70 backdrop-blur-md border border-white/10;
+}
+
+/* RTL specific styles */
+.rtl {
+  direction: rtl;
+}
+
+/* LTR specific styles */
+.ltr {
+  direction: ltr;
+}
+
+/* RTL-specific adjustments */
+[dir="rtl"] .space-x-6 > * + * {
+  margin-right: 1.5rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .space-x-4 > * + * {
+  margin-right: 1rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .space-x-2 > * + * {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+/* Fix for icons in RTL mode */
+[dir="rtl"] svg {
+  transform: scaleX(1);
+}
+
+/* Fix for RTL arrow icons */
+[dir="rtl"] .arrow-icon-rtl {
+  transform: scaleX(-1);
+}
+
+/* RTL dropdown menu fixes */
+[dir="rtl"] .dropdown-menu-rtl {
+  left: 0;
+  right: auto;
+}
+
+/* RTL form controls */
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: right;
+}
+
+/* RTL button group fixes */
+[dir="rtl"] .button-group-rtl {
+  flex-direction: row-reverse;
+}
+
+/* RTL calendar fixes */
+[dir="rtl"] .rdp-nav_button_previous {
+  transform: rotate(180deg);
+}
+
+[dir="rtl"] .rdp-nav_button_next {
+  transform: rotate(180deg);
+}
+
+/* RTL tabs fixes */
+[dir="rtl"] .tabs-rtl {
+  flex-direction: row-reverse;
+}
+
+/* Fix for flex layouts in RTL */
+[dir="rtl"] .flex-row-reverse-rtl {
+  flex-direction: row-reverse;
+}
+
+/* Fix for grid layouts in RTL */
+[dir="rtl"] .grid-rtl {
+  direction: rtl;
+}
+
+/* Fix for absolute positioning in RTL */
+[dir="rtl"] .absolute-rtl-left {
+  right: 0;
+  left: auto;
+}
+
+[dir="rtl"] .absolute-rtl-right {
+  left: 0;
+  right: auto;
+}
+
+/* Fix for text alignment in RTL */
+[dir="rtl"] .text-right-rtl {
+  text-align: left;
+}
+
+[dir="rtl"] .text-left-rtl {
+  text-align: right;
+}
+
+/* Fix for margin and padding in RTL */
+[dir="rtl"] .ml-rtl {
+  margin-right: 0.25rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .mr-rtl {
+  margin-left: 0.25rem;
+  margin-right: 0;
+}
+
+[dir="rtl"] .pl-rtl {
+  padding-right: 0.25rem;
+  padding-left: 0;
+}
+
+[dir="rtl"] .pr-rtl {
+  padding-left: 0.25rem;
+  padding-right: 0;
+}
+
+/* Fix for border radius in RTL */
+[dir="rtl"] .rounded-l-rtl {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+[dir="rtl"] .rounded-r-rtl {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Fix for transform in RTL */
+[dir="rtl"] .rotate-rtl {
+  transform: rotate(180deg);
+}
+
+/* Fix for shadow in RTL */
+[dir="rtl"] .shadow-rtl {
+  box-shadow: -1px 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Fix for transition in RTL */
+[dir="rtl"] .transition-rtl {
+  transition-property: right;
+}
+
+/* Fix for animation in RTL */
+[dir="rtl"] .animate-rtl {
+  animation-direction: reverse;
+}
+
+/* Fix for z-index in RTL */
+[dir="rtl"] .z-rtl {
+  z-index: 10;
+}
+
+/* Fix for overflow in RTL */
+[dir="rtl"] .overflow-rtl {
+  overflow: hidden;
+}
+
+/* Fix for position in RTL */
+[dir="rtl"] .position-rtl {
+  position: absolute;
+  right: 0;
+  left: auto;
+}
+
+/* Fix for display in RTL */
+[dir="rtl"] .display-rtl {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* Fix for float in RTL */
+[dir="rtl"] .float-rtl {
+  float: right;
+}
+
+/* Fix for clear in RTL */
+[dir="rtl"] .clear-rtl {
+  clear: right;
+}
+
+/* Fix for text-decoration in RTL */
+[dir="rtl"] .text-decoration-rtl {
+  text-decoration: underline;
+  text-decoration-position: under;
+}
+
+/* Fix for text-transform in RTL */
+[dir="rtl"] .text-transform-rtl {
+  text-transform: uppercase;
+}
+
+/* Fix for text-indent in RTL */
+[dir="rtl"] .text-indent-rtl {
+  text-indent: 1rem;
+}
+
+/* Fix for text-overflow in RTL */
+[dir="rtl"] .text-overflow-rtl {
+  text-overflow: ellipsis;
+}
+
+/* Fix for white-space in RTL */
+[dir="rtl"] .white-space-rtl {
+  white-space: nowrap;
+}
+
+/* Fix for word-break in RTL */
+[dir="rtl"] .word-break-rtl {
+  word-break: break-all;
+}
+
+/* Fix for word-wrap in RTL */
+[dir="rtl"] .word-wrap-rtl {
+  word-wrap: break-word;
+}
+
+/* Fix for writing-mode in RTL */
+[dir="rtl"] .writing-mode-rtl {
+  writing-mode: vertical-rl;
+}
+
+/* Fix for text-orientation in RTL */
+[dir="rtl"] .text-orientation-rtl {
+  text-orientation: upright;
+}
+
+/* Fix for text-combine-upright in RTL */
+[dir="rtl"] .text-combine-upright-rtl {
+  text-combine-upright: all;
+}
+
+/* Fix for text-emphasis in RTL */
+[dir="rtl"] .text-emphasis-rtl {
+  text-emphasis: filled;
+}
+
+/* Fix for text-emphasis-position in RTL */
+[dir="rtl"] .text-emphasis-position-rtl {
+  text-emphasis-position: under right;
+}
+
+/* Fix for text-shadow in RTL */
+[dir="rtl"] .text-shadow-rtl {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Fix for text-underline-position in RTL */
+[dir="rtl"] .text-underline-position-rtl {
+  text-underline-position: under;
+}
+
+/* Fix for text-underline-offset in RTL */
+[dir="rtl"] .text-underline-offset-rtl {
+  text-underline-offset: 0.1em;
+}
+
+/* Fix for text-decoration-thickness in RTL */
+[dir="rtl"] .text-decoration-thickness-rtl {
+  text-decoration-thickness: 0.1em;
+}
+
+/* Fix for text-decoration-style in RTL */
+[dir="rtl"] .text-decoration-style-rtl {
+  text-decoration-style: wavy;
+}
+
+/* Fix for text-decoration-color in RTL */
+[dir="rtl"] .text-decoration-color-rtl {
+  text-decoration-color: currentColor;
+}

@@ -1,0 +1,243 @@
+{
+  "common": {
+    "switchLanguage": "العربية",
+    "search": "Search",
+    "viewAll": "View All",
+    "contactUs": "Contact Us",
+    "login": "Login",
+    "register": "Register",
+    "menu": "Menu"
+  },
+  "navigation": {
+    "home": "Home",
+    "properties": "Properties",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Discover Your Dream Home",
+    "subtitle": "Browse our exclusive collection of luxury properties across Saudi Arabia",
+    "searchPlaceholder": "Search by city, district, or property type",
+    "searchButton": "Search",
+    "featuredProperties": "Featured Properties"
+  },
+  "propertyCard": {
+    "price": "Price",
+    "area": "Area",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "viewDetails": "View Details",
+    "featured": "Featured",
+    "new": "New",
+    "certified": "Certified",
+    "sqm": "sqm"
+  },
+  "propertyDetails": {
+    "description": "Description",
+    "features": "Features",
+    "location": "Location",
+    "contactAgent": "Contact Agent",
+    "schedule": "Schedule Viewing",
+    "share": "Share",
+    "save": "Save",
+    "propertyId": "Property ID",
+    "listedOn": "Listed On",
+    "propertyType": "Property Type",
+    "yearBuilt": "Year Built"
+  },
+  "form": {
+    "number": "Phone Number",
+    "dateOfBirth": "Date of Birth",
+    "name": "Full Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Submit",
+    "required": "Required",
+    "invalidEmail": "Invalid email address",
+    "invalidPhone": "Invalid phone number"
+  },
+  "filters": {
+    "title": "Filter Results",
+    "propertyType": "Property Type",
+    "priceRange": "Price Range",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "area": "Area",
+    "features": "Features",
+    "applyFilters": "Apply Filters",
+    "resetFilters": "Reset",
+    "from": "From",
+    "to": "To"
+  },
+  "stats": {
+    "properties": "Properties",
+    "clients": "Clients",
+    "cities": "Cities",
+    "awards": "Awards",
+    "landArea": "Total Land Area Used",
+    "landAreaValue": "1.2",
+    "offers": "Number of Offers",
+    "offersValue": "350+",
+    "developers": "Distinguished Developers",
+    "developersValue": "120+"
+  },
+  "footer": {
+    "about": "About Company",
+    "aboutText": "We are a leading real estate development initiative providing exceptional services to clients seeking a unique living experience.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact Information",
+    "subscribe": "Subscribe to Newsletter",
+    "subscribePlaceholder": "Email Address",
+    "subscribeButton": "Subscribe",
+    "copyright": "All Rights Reserved © 2023 Real Estate Development Initiative",
+    "contact": {
+      "title": "Contact Us",
+      "address": "King Fahd Road, Riyadh, Saudi Arabia",
+      "phone": "+966 11 000 0000",
+      "email": "info@realestate-initiative.sa"
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "links": ["About Us", "Services", "Projects", "News & Events", "Careers"]
+    },
+    "newsletter": {
+      "title": "Subscribe to Our Newsletter",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    },
+    "workingHours": {
+      "title": "Working Hours",
+      "hours": "Sunday - Thursday: 8:00 AM - 4:00 PM"
+    }
+  },
+  "map": {
+    "title": "Real Estate Activity by Region",
+    "subtitle": "Explore investment opportunities across Saudi Arabia",
+    "regions": {
+      "riyadh": {
+        "name": "Riyadh",
+        "projects": "125 Projects",
+        "area": "450,000 sqm"
+      },
+      "makkah": {
+        "name": "Makkah",
+        "projects": "98 Projects",
+        "area": "320,000 sqm"
+      },
+      "eastern": {
+        "name": "Eastern Province",
+        "projects": "87 Projects",
+        "area": "280,000 sqm"
+      },
+      "madinah": {
+        "name": "Madinah",
+        "projects": "45 Projects",
+        "area": "150,000 sqm"
+      }
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive solutions for real estate development",
+    "items": [
+      {
+        "title": "Property Registration",
+        "description": "Streamlined process for registering properties and new developments"
+      },
+      {
+        "title": "Land Planning",
+        "description": "Expert consultation on optimal land use and development planning"
+      },
+      {
+        "title": "Developer Network",
+        "description": "Connect with qualified and professional developers in the industry"
+      },
+      {
+        "title": "Market Analysis",
+        "description": "Detailed insights on market trends and investment opportunities"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "Discover our outstanding real estate developments",
+    "viewDetails": "View Project Details",
+    "items": [
+      {
+        "title": "Al Wadi Residences",
+        "location": "Riyadh",
+        "area": "120,000 sqm",
+        "units": "450 units",
+        "description": "Luxury residential complex with modern amenities and green spaces"
+      },
+      {
+        "title": "Jeddah Gateway",
+        "location": "Jeddah",
+        "area": "85,000 sqm",
+        "units": "320 units",
+        "description": "Mixed-use development featuring residential and commercial spaces"
+      },
+      {
+        "title": "Eastern Heights",
+        "location": "Dammam",
+        "area": "95,000 sqm",
+        "units": "380 units",
+        "description": "Premium waterfront properties with panoramic gulf views"
+      }
+    ]
+  },
+  "calendar": {
+    "title": "Upcoming Events",
+    "subtitle": "Stay updated with our events and real estate exhibitions",
+    "viewEvent": "View Event Details",
+    "events": [
+      {
+        "date": "2023-06-15",
+        "title": "Real Estate Investment Forum",
+        "location": "Riyadh Exhibition Center",
+        "time": "9:00 AM - 5:00 PM",
+        "description": "Join industry leaders to discuss the future of real estate investment in Saudi Arabia"
+      },
+      {
+        "date": "2023-07-22",
+        "title": "PropTech Summit",
+        "location": "King Abdullah Financial District",
+        "time": "10:00 AM - 4:00 PM",
+        "description": "Explore the latest technological innovations in the real estate sector"
+      },
+      {
+        "date": "2023-08-10",
+        "title": "Sustainable Development Workshop",
+        "location": "Jeddah Chamber of Commerce",
+        "time": "1:00 PM - 6:00 PM",
+        "description": "Learn about sustainable practices in modern real estate development"
+      }
+    ]
+  },
+  "partners": {
+    "title": "Our Partners",
+    "subtitle": "Collaborating with trusted government entities and organizations",
+    "partners": [
+      "Ministry of Housing",
+      "Sakani Program",
+      "WAFI",
+      "Saudi Real Estate Refinance Company",
+      "Public Investment Fund"
+    ]
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode",
+    "system": "System"
+  },
+  "header": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "userGuide": "User Guide",
+    "about": "About",
+    "cta": "Real Estate Registration Services",
+    "switchToArabic": "العربية"
+  }
+}
